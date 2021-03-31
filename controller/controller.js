@@ -66,11 +66,9 @@ const updateBook = (req, res) => {
         },
         (err, doc) => {
           if (err) {
-            //res.json({message: err.message})
             res.json({ success: false, error: err.message });
           } else {
             res.json({ success: true, error: null });
-            //res.redirect('/books')
           }
         }
       );
