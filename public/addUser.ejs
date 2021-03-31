@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    
+</head>
+<body>
+    <h1>Add User</h1>
+    
+    <div>
+        <% if (errors) { %>
+            <% errors.forEach(function(error){ %>
+                <p><%= error.msg %></p>
+            <% }) %>
+        <% } %>
+                
+                <% if (err) { %>
+                    <p><%= err %></p>
+                <% } %>     
+    </div>
+    <form class="center" action="/users/addUser" method="POST">
+        <input type="text" name="fName" placeholder="First Name"><br>
+        <input type="text" name="lName" placeholder="Last Name"><br>
+        <input type="text" name="email" placeholder="Email"><br>
+        <input type="text" name="zipCode" placeholder="Zip Code"><br>
+        <input type="text" name="city" placeholder="City"><br>
+        <input type="text" name="street" placeholder="Street"><br>
+        <input type="text" name="number" placeholder="Number"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <input type="password" name="confirm_password" placeholder="Confirm Password"/><br>
+        <input type="submit" value="Submit"><br>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    
+</head>
+<body>
+    
+    <form action="/orders/addOrder" method="GET">
+        <button>Add Orders</button>
+    </form>
+
+    <%data.forEach(e=>{%>
+        <h2>Book: <%= e.book %></h2>
+        <h2>Book ID : <%= e.bookId %> </h2>
+        <h2>Quantity: <%= e.qty %></h2>
+       
+        
+        <form action="/orders/<%= e._id%>" method="GET">
+            <button>Show Order</button>
+        </form>
+    <%})%>
+            
+</body>
+</html>

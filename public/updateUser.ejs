@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User</title>
+    
+</head>
+<body>
+    <h1>Update User</h1>
+
+    <form class="center" method="POST" action="/users/updateUser/<%= data._id%>" >
+        <input type="text" name="fName" placeholder="First Name"><br>
+        <input type="text" name="lName" placeholder="Last Name"><br>
+        <input type="text" name="email" placeholder="Email"><br>
+        <input type="text" name="password" placeholder="Password"><br>
+        <input type="submit" value="Submit"><br>
+    </form>
+    <h2>User : <%= data.fName %> <%= data.lName %></h2>
+    <p>Email: <%= data.email %></p>
+    <p>Password: <%= data.password %></p>
+        
+        <p>Id: <%= data._id%></p>
+        <form action="/users" method="GET">
+            <button>Back to Users</button>
+        </form>
+</body>
+</html>

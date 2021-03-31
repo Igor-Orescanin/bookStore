@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Order</title>
+   
+</head>
+<body>
+    <h1>Update Order</h1>
+
+    <form class="center" method="POST" action="/orders/updateOrder/<%= data._id%>" >
+        <input type="text" name="bookId" placeholder="Book ID"><br>
+        <input type="text" name="qty" placeholder="Quantity"><br>
+        <input type="text" name="books" placeholder="Books "><br>
+        <input type="submit" value="Submit"><br>
+    </form>
+    <h2>Book ID : <%= data.bookId %> </h2>
+    <p>Quantity: <%= data.qty %></p>
+    <p>Id: <%= data._id%></p>
+
+    <% if (data.books) { %>
+        <% data.books.forEach(function(book){ %>
+            <p> BOOKS: <%= book %></p>
+    
+        <% }) %>
+            <% } %>
+    <form action="/orders" method="GET">
+        <button>Back to Orders</button>
+    </form>
+</body>
+</html>

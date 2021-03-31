@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= data.title%></title>
+    
+</head>
+<body>
+   
+        <h2>Author: <%= data.author%></h2>
+        <h4>Title: <%= data.title%></h4>
+        <p>Year: <%= data.year%></p>
+        <h4>Price: <%= data.price%> euros</h4>
+        <p>ID: <%= data._id%></p>
+        
+
+        <form action="/orders/addOrder" method="GET">
+            <button>Make Order</button>
+        </form>
+        <form action="/books/updateBook/<%= data._id%>" method="GET">
+            <button>Update</button>
+        </form>
+
+        <button onclick="del(event)">Delete</button>
+
+        <form action="/books" method="GET">
+            <button>Back to Books</button>
+        </form>
+        
+        <script>
+    function del(e){
+        e.preventDefault()
+        let url = "/books/<%=data._id%>"
+        console.log(url)
+        fetch(url, {
+            method: 'delete',
+            headers: {'Content-Type': 'application/json'}
+        }).then(data => {
+            data.json().then( m => {
+                if(m.status){
+                console.log("success")
+                window.location.replace('/books/')
+                }else{
+                    console.log("Failed")
+                }
+            })
+        })
+    }
+        </script> 
+</body>
+</html>

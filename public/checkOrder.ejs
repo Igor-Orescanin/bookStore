@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% if (data.books) { %>
+        <h4>OrderID : <%= orderId%></h4>
+        <% data.books.forEach(function(book){ %>
+            <div style="border: 1px solid; width: 40%; margin: 1rem auto; text-align: center;">
+                <p> Book Title: <%= book.title %></p>
+                <p> Author: <%= book.author %> </p>
+            </div>
+        <% }) %>
+            <% } %>
+</body>
+</html>
