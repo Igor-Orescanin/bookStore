@@ -5,19 +5,19 @@ const controller = require('../controller/controller')
 
 
 booksRouter
-    .route('/books')
+    .route('/')
     .get((req,res) => {
         controller.books(res)
-        
     })
 
 
 booksRouter
-    .route('/books/addBook')
+    .route('/addBook')
     .get((req, res) => {
-        
-        res.sendFile(path.join(__dirname + '/../public' + '/addBook.html'))
-        
+        res.render("mainTemplate", {
+            title: "Add Book",
+            render: "addBook"
+        });
     })
     .post((req, res) => {
         controller.addBook(req, res)
@@ -25,7 +25,7 @@ booksRouter
     })
     
     booksRouter
-    .route('/books/updateBook/:id')
+    .route('/updateBook/:id')
     .get((req, res) => {
         controller.getUpdateBook(req, res)
         
@@ -37,7 +37,7 @@ booksRouter
 
 
 booksRouter
-    .route('/books/:id')
+    .route('/:id')
     .get((req, res) => {
         controller.book(req, res)
         
@@ -50,7 +50,7 @@ booksRouter
         controller.deleteBook(req, res)
         
     })
-    booksRouter.delete("/book/:id",(req,res)=>{
+booksRouter.delete("/:id",(req,res)=>{
         // res.send("asdfgh")
         res.json({status: 1})
     })

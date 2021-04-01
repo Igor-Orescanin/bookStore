@@ -42,9 +42,9 @@ app.get('/about', (req, res) => {
 })
 app.use('/test', test)
 
-app.use('/', users)
-app.use('/', books)
-app.use('/', orders)
+app.use('/users', users)
+app.use('/books', books)
+app.use('/orders', orders)
 
 
 

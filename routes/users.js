@@ -8,7 +8,7 @@ const auth = require('../middleware/auth')
 
 
 usersRouter
-    .route('/users')
+    .route('/')
     .get((req,res) => {
         controller.users(res)
     })
@@ -18,7 +18,7 @@ usersRouter
     })
 
 usersRouter
-    .route('/users/login')
+    .route('/login')
     .get((req,res) => {
         res.render('login')
     })
@@ -27,7 +27,7 @@ usersRouter
     }) 
 
 usersRouter
-    .route('/users/addUser')
+    .route('/addUser')
     .get((req, res) => res.render('addUser', { errors: null, err:null }))
     .post(validation.user(), (req, res) => {
         const errors = validationResult(req).array();
@@ -40,7 +40,7 @@ usersRouter
     })
     
 usersRouter
-    .route('/users/updateUser/:id')
+    .route('/updateUser/:id')
     .get((req, res) => {
         controller.getUpdateUser(req, res)
     })
@@ -48,7 +48,7 @@ usersRouter
         controller.updateUser(req, res)
     })
 usersRouter
-    .route('/users/:id')
+    .route('/:id')
     .get((req, res) => {
         controller.user(req, res)
     })

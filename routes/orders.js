@@ -5,21 +5,21 @@ const path = require('path');
 
 
 ordersRouter
-    .route('/orders')
+    .route('/')
     .get((req,res) => {
         controller.orders(res)
         
     })
     
 ordersRouter
-    .route('/orders/check/:id')
+    .route('/check/:id')
     .get((req,res) => {
         controller.checkOrder(req, res)
         
     })    
 
 ordersRouter
-    .route('/orders/addOrder')
+    .route('/addOrder')
     .get((req, res) => {
         res.sendFile(path.join(__dirname + '/../public' + '/addOrder.html'))
         
@@ -29,7 +29,7 @@ ordersRouter
     })
     
 ordersRouter
-    .route('/orders/updateOrder/:id')
+    .route('/updateOrder/:id')
     .get((req, res) => {
         controller.getUpdateOrder(req, res)
     })
@@ -41,7 +41,7 @@ ordersRouter
 
 
 ordersRouter
-    .route(`/orders/:id`)
+    .route(`/:id`)
     .get((req, res) => {
         controller.order(req, res)
     })
