@@ -51,7 +51,6 @@ booksRouter
         
     })
 booksRouter.delete("/:id",(req,res)=>{
-        // res.send("asdfgh")
         res.json({status: 1})
     })
 
