@@ -1,7 +1,5 @@
 
 
-
-    <button onclick="del(event)">Delete</button>
     <div class="d-flex flex-column align-items-center">
             <div class="card" style="width: 18rem; height:18rem;">
                 <img class="card-img-top" src="https://source.unsplash.com/random" alt="Book cover image">
@@ -12,15 +10,15 @@
                   <p class="card-text">City: <%= data.address[0].city %></p>
                 </div>
               </div>
-            <div class="d-flex justify-content-center">
-                <form action="/users/updateUser/<%= data._id%>" method="GET">
-                    <button class="btn btn-success" >Update</button>
-                </form>
-                <button class="btn btn-danger" onclick="del(event)">Delete</button>
-                <form action="/users" method="GET">
-                    <button class="btn btn-warning">Back to Users</button>
-                </form>
-            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <form action="/users/updateUser/<%= data._id%>" method="GET">
+                <button class="btn btn-success" >Update</button>
+            </form>
+            <button class="btn btn-danger" onclick="del(event)">Delete</button>
+            <form action="/users" method="GET">
+                <button class="btn btn-warning">Back to Users</button>
+            </form>
         </div>
 
 
