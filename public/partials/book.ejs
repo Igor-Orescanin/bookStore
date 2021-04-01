@@ -1,23 +1,26 @@
 
    
-        <h2>Author: <%= data.author%></h2>
-        <h4>Title: <%= data.title%></h4>
-        <p>Year: <%= data.year%></p>
-        <h4>Price: <%= data.price%> euros</h4>
-        <p>ID: <%= data._id%></p>
-        
-
+        <div class="card">
+            <img class="card-img-top" src="https://source.unsplash.com/random" alt="Card image cap">
+            <div class="card-body">
+              <h4 class="card-title"><%= data.title%></h4>
+              <h3 class="card-title">By: <%= data.author%></h3>
+              <p class="card-text">Year: <%= data.year%></p>
+              <p class="card-text">Price: <%= data.price%> euros</p>
+              <p class="card-text">ID: <%= data._id%></p>
+            </div>
+          </div>
         <form action="/orders/addOrder" method="GET">
-            <button>Make Order</button>
+            <button class="btn btn-primary" >Make Order</button>
         </form>
         <form action="/books/updateBook/<%= data._id%>" method="GET">
-            <button>Update</button>
+            <button class="btn btn-success" >Update</button>
         </form>
 
-        <button onclick="del(event)">Delete</button>
+        <button class="btn btn-danger" onclick="del(event)">Delete</button>
 
         <form action="/books" method="GET">
-            <button>Back to Books</button>
+            <button class="btn btn-warning">Back to Books</button>
         </form>
         
         <script>
