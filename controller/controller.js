@@ -164,7 +164,13 @@ const addUser = (req, res) => {
     .then((result) => {
       console.log("fsdfd", result);
       if (result.length > 0) {
-        res.render("addUser", { err: "Email already in use", errors: null });
+        res.render("mainTemplate", {
+          title: "Add User",
+          render: "addUser",
+          err: "Email already in use",
+          errors: null
+        });
+        //res.render("addUser", { err: "Email already in use", errors: null });
       } else {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
           if (err) {
