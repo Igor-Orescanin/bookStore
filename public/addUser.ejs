@@ -21,18 +21,51 @@
                     <p><%= err %></p>
                 <% } %>     
     </div>
-    <form class="center" action="/users/addUser" method="POST">
-        <input type="text" name="fName" placeholder="First Name"><br>
-        <input type="text" name="lName" placeholder="Last Name"><br>
-        <input type="text" name="email" placeholder="Email"><br>
-        <input type="text" name="zipCode" placeholder="Zip Code"><br>
-        <input type="text" name="city" placeholder="City"><br>
-        <input type="text" name="street" placeholder="Street"><br>
-        <input type="text" name="number" placeholder="Number"><br>
-        <input type="password" name="password" placeholder="Password"><br>
-        <input type="password" name="confirm_password" placeholder="Confirm Password"/><br>
-        <input type="submit" value="Submit"><br>
-    </form>
-    
+    <div class="row">
+        <div class="col-md-6">
+            <form method="POST" action="/users/addUser">
+                <div class="form-group col-md-12">
+                    <label for="exampleInputPassword1">First Name</label>
+                    <input class="form-control" type="text" name="fName" placeholder="First Name" />
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="exampleInputPassword1">Last Name</label>
+                    <input class="form-control" type="text" name="lName" placeholder="Last Name" />
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="exampleInputPassword1">Email</label>
+                    <input class="form-control" type="text" name="email" placeholder="Email" />
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="exampleInputPassword1">Zip Code</label>
+                    <input class="form-control" type="text" name="zipCode" placeholder="Zip Code" />
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="exampleInputPassword1">City</label>
+                    <input class="form-control" type="text" name="city" placeholder="City" />
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="exampleInputPassword1">Street</label>
+                    <input class="form-control" type="text" name="street" placeholder="Street" />
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="exampleInputPassword1">Number</label>
+                    <input class="form-control" type="text" name="number" placeholder="Number" />
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input class="form-control" type="password" name="password" placeholder="Password" />
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="exampleInputPassword1">Confirm Password</label>
+                    <input class="form-control" type="password" name="confirm_password" placeholder="Confirm Password" />
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-sm btn-primary">Add User</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
 </body>
 </html>
