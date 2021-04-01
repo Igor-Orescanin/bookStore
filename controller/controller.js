@@ -259,6 +259,11 @@ const user = (req, res) => {
       res.json({ message: err });
     } else {
       res.render("user", { data: doc });
+      res.render("mainTemplate", {
+        title: `${doc.fName} ${doc.lName}`,
+        render: "user",
+        data: doc,
+      });
     }
   });
 };
