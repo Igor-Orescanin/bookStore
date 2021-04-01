@@ -28,7 +28,14 @@ usersRouter
 
 usersRouter
     .route('/addUser')
-    .get((req, res) => res.render('addUser', { errors: null, err:null }))
+    .get((req, res) => {
+        res.render("mainTemplate", {
+            title: "Add User",
+            render: "addUser",
+            err: null,
+            errors: null
+        });
+    })
     .post(validation.user(), (req, res) => {
         const errors = validationResult(req).array();
         if(errors.length > 0){
