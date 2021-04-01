@@ -1,26 +1,28 @@
 
    
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://source.unsplash.com/random" alt="Book cover image">
-            <div class="card-body">
-              <h3 class="card-title"><%= data.title%></h3>
-              <h4 class="card-title">By: <%= data.author%></h4>
-              <p class="card-text">Year: <%= data.year%></p>
-              <p class="card-text">Price: <%= data.price%> euros</p>
-              <p class="card-text">ID: <%= data._id%></p>
+        <div class="d-flex flex-column align-items-center">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://source.unsplash.com/random" alt="Book cover image">
+                <div class="card-body">
+                  <h2 class="card-title"><%= data.title%></h2>
+                  <h4 class="card-title">By: <%= data.author%></h4>
+                  <p class="card-text">Year: <%= data.year%></p>
+                  <p class="card-text">Price: <%= data.price%> euros</p>
+                  <p class="card-text">ID: <%= data._id%></p>
+                </div>
+              </div>
+            <div class="d-flex justify-content-center">
+                <form action="/orders/addOrder" method="GET">
+                    <button class="btn btn-primary" >Make Order</button>
+                </form>
+                <form action="/books/updateBook/<%= data._id%>" method="GET">
+                    <button class="btn btn-success" >Update</button>
+                </form>
+                <button class="btn btn-danger" onclick="del(event)">Delete</button>
+                <form action="/books" method="GET">
+                    <button class="btn btn-warning">Back to Books</button>
+                </form>
             </div>
-          </div>
-        <div class="d-flex justify-content-between">
-            <form action="/orders/addOrder" method="GET">
-                <button class="btn btn-primary" >Make Order</button>
-            </form>
-            <form action="/books/updateBook/<%= data._id%>" method="GET">
-                <button class="btn btn-success" >Update</button>
-            </form>
-            <button class="btn btn-danger" onclick="del(event)">Delete</button>
-            <form action="/books" method="GET">
-                <button class="btn btn-warning">Back to Books</button>
-            </form>
         </div>
         
         <script>
