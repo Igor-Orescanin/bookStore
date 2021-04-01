@@ -33,7 +33,13 @@ usersRouter
         const errors = validationResult(req).array();
         if(errors.length > 0){
             req.session.errors = errors;
-            res.render('addUser', { errors: req.session.errors ,err:null});
+            res.render("mainTemplate", {
+                title: "Add User",
+                render: "addUser",
+                err: null,
+                errors: req.session.errors
+            });
+            //res.render('addUser', { errors: req.session.errors ,err:null});
         } else {
             controller.addUser(req, res)
         }
