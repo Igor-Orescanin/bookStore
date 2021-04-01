@@ -20,7 +20,10 @@ usersRouter
 usersRouter
     .route('/login')
     .get((req,res) => {
-        res.render('login')
+        res.render("mainTemplate", {
+            title: "Login",
+            render: "login",
+        });
     })
     .post((req, res) => {
         controller.loginUser(req, res)
