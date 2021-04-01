@@ -92,7 +92,11 @@ const book = (req, res) => {
     if (err) {
       res.json({ message: err });
     } else {
-      res.render("book", { data: doc });
+      res.render("mainTemplate", {
+        title: doc.title,
+        render: "book",
+        data: doc,
+      });
     }
   });
 };
