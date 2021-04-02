@@ -376,7 +376,7 @@ const checkOrder = async (req, res) => {
   await schema.OrderData.findOne({ _id: id })
     .populate("books")
     .then((book) => {
-      res.render("checkOrder", { data: book, orderId: id });
+      res.render("mainTemplate", {title: "Check Order", render: "checkOrder", data: book, orderId: id });
     });
 };
 
