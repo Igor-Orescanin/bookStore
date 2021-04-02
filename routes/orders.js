@@ -22,7 +22,7 @@ ordersRouter
     .route('/addOrder')
     .get((req, res) => {
         res.render("mainTemplate", {
-            tiitle: "Add Order",
+            title: "Add Order",
             render: "addOrder"
         })
     })
