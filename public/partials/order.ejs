@@ -1,0 +1,45 @@
+
+   
+        <div class="d-flex flex-column align-items-center">
+
+            <ul class="list-group">
+                <li class="list-group-item">Author: <%=  book.author %></li>
+                <li class="list-group-item">Title: <%=  book.title %></li>
+                <li class="list-group-item">Quantity: <%= data.qty%></li>
+                <li class="list-group-item">BookId: <%= data.bookId%></li>
+                <li class="list-group-item list-group-item-primary">Price: <%= price %> euros</li>
+              </ul>
+            
+            
+            <div class="d-flex justify-content-center">
+                <form action="/orders/updateOrder/<%= data._id%>" method="GET">
+                    <button class="btn btn-success">Update</button>
+                </form>
+                <form action="/orders" method="GET">
+                    <button class="btn btn-secondary">Back to Orders</button>
+                </form>
+                <button class="btn btn-danger" onclick="del(event)">Delete</button>
+            </div>
+            
+        </div>
+        
+        <script>
+    function del(e){
+        e.preventDefault()
+        let url = "/orders/<%=data._id%>"
+        console.log(url)
+        fetch(url, {
+            method: 'delete',
+            headers: {'Content-Type': 'application/json'}
+        }).then(data => {
+            data.json().then( m => {
+                if(m.status){
+                console.log("success")
+                window.location.replace('/orders/')
+                }else{
+                    console.log("Failed")
+                }
+            })
+        })
+    }
+        </script> 
