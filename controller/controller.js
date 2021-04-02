@@ -400,10 +400,12 @@ const order = (req, res) => {
         if (err) {
           res.json({ message: err });
         }
-        res.render("order", {
+        res.render("mainTemplate", {
+          title: "Order",
+          render: "order",
           data: doc,
           book: book,
-          price: book.price * doc.qty,
+          price: book.price * doc.qty
         });
       });
     }
