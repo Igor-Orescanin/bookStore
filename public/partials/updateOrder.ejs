@@ -1,5 +1,7 @@
 
-    <h1>Update Order</h1>
+
+
+
 
 
     <div class="row">
@@ -7,11 +9,11 @@
             <form method="POST" action="/orders/updateOrder/<%= data._id%>" id="editForm">
                 <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Book Id</label>
-                    <input class="form-control" type="text" value="<%= data.bookId %>" name="bookId" placeholder="Book Id" />
+                    <input class="form-control" type="text" name="bookId" placeholder="Book Id" />
                 </div>
                 <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Quantity</label>
-                    <input class="form-control" type="text" value="<%= data.qty%>" name="qty" placeholder="Quantity" />
+                    <input class="form-control" type="text"  name="qty" placeholder="Quantity" />
                 </div>
                 <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Books</label>
@@ -37,7 +39,63 @@
     
     
     <hr>
+        <a href="/books" class="btn btn-sm btn-success">Back To Books</a>
+    
+    
+        <div id="messageModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" id="modalHeader">
+                    <h5 class="modal-title " id="modalTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            
+        </div>
+    
+    
+        <script>
+            $('#editForm').on('submit', (e)=>{
+                e.preventDefault()
+                console.log(e.target)
+                $.ajax({
+                    url: $(e.target).attr('action'),
+                    method: $(e.target).attr('method'),
+                   
+                    success: response=>{
+                        if(response.success){
+                            $("#modalHeader").addClass("bg-success").removeClass("bg-danger")
+                            $("#modalTitle").html("").html("Success")
+                            $("#modalBody").html("").html(`Update Book Success.`)
+                            $("#messageModal").modal("show")
+                        }else{// we got replay from server but the process not don
+                            $("#modalHeader").removeClass("bg-success").addClass("bg-danger")
+                            $("#modalTitle").html("").html("Error").removeClass("bg-success").addClass("bg-danger")
+                            $("#modalBody").html("").html(`Update Not Success.<br/> ${response.error}`)
+                            $("#messageModal").modal("show")
+                        }
+                        console.log(response)
+                        
+                    },
+                    error: error=>{
+                        $("#modalHeader").removeClass("bg-success").addClass("bg-danger")
+                            $("#modalTitle").html("").html("Error").removeClass("bg-success").addClass("bg-danger")
+                            $("#modalBody").html("").html(`internal server error`)
+                            $("#messageModal").modal("show")
+                        console.log(error)
+                        
+                    }
+                })
+            })
+    
+        </script>
+    
         
-    
-    
-       
