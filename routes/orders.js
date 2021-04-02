@@ -21,8 +21,10 @@ ordersRouter
 ordersRouter
     .route('/addOrder')
     .get((req, res) => {
-        res.sendFile(path.join(__dirname + '/../public' + '/addOrder.html'))
-        
+        res.render("mainTemplate", {
+            tiitle: "Add Order",
+            render: "addOrder"
+        })
     })
     .post((req, res) => {
         controller.addOrder(req, res)
