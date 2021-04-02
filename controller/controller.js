@@ -107,7 +107,7 @@ const users = (res) => {
   schema.UserData.find()
     .lean()
     .then((docs) => {
-      res.render("mainTemlate", { 
+      res.render("mainTemplate", { 
         title: "Users",
         render: "users",
         data: docs
