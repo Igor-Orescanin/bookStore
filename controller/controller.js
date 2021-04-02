@@ -107,7 +107,11 @@ const users = (res) => {
   schema.UserData.find()
     .lean()
     .then((docs) => {
-      res.render("users", { data: docs });
+      res.render("mainTemlate", { 
+        title: "Users",
+        render: "users",
+        data: docs
+       });
     })
     .catch((error) => {
       res.json({ error: error });

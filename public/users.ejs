@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
-</head>
-<body>
-    
-    <form action="/users/addUser" method="GET">
-        <button>Add Users</button>
-    </form>
 
-    <%data.forEach(e=>{%>
-        <h2>User : <%= e.fName %> <%= e.lName %></h2>
+
+
+<div class="m-2">
+    <form action="/users/addUser" method="GET">
+      <button class="btn btn-success">Add User</button>
+    </form>
+    <div class="row justify-content-between">
+      <%data.forEach(e=>{%>
+      <div class="card m-2" style="width: 18rem">
+        <div class="card-header">User : <%= e.fName %> <%= e.lName %></div>
         <form action="/users/<%= e._id%>" method="GET">
-            <button>Show User</button>
-        </form>
-    <%})%>
-            
-</body>
-</html>
+            <button class="btn btn-secondary w-100">Show User</button>
+          </form>
+      </div>
+
+      <%})%>
+    </div>
+</div>
