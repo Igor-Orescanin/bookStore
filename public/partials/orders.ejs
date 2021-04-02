@@ -1,17 +1,18 @@
 
-    
-    <form action="/orders/addOrder" method="GET">
-        <button>Add Orders</button>
-    </form>
-
-    <%data.forEach(e=>{%>
-        <h2>Book: <%= e.book %></h2>
-        <h2>Book ID : <%= e.bookId %> </h2>
-        <h2>Quantity: <%= e.qty %></h2>
-       
-        
-        <form action="/orders/<%= e._id%>" method="GET">
-            <button>Show Order</button>
-        </form>
-    <%})%>
-            
+<form action="/orders/addOrder" method="GET">
+  <button class="btn btn-success">Add Order</button>
+</form>
+<div class="row justify-content-between">
+  <%data.forEach(e=>{%>
+  <div class="card" style="width: 18rem">
+    <div class="card-header">Book: <%= e.book %></div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Book ID : <%= e.bookId %></li>
+      <li class="list-group-item">Quantity: <%= e.qty %></li>
+    </ul>
+  </div>
+  <form action="/orders/<%= e._id%>" method="GET">
+    <button>Show Order</button>
+  </form>
+  <%})%>
+</div>
