@@ -279,8 +279,8 @@ const user = (req, res) => {
 const orders = (res) => {
   schema.OrderData.find()
     .lean()
-    .then((docs) => {
-      res.render("orders", { data: docs });
+    .then((docs) => { 
+      res.render("mainTemplate", {title: "Orders", render:"orders", data: docs });
     })
     .catch((error) => {
       res.json({ error: error });
