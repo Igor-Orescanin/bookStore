@@ -1,1 +1,10 @@
-<h1>Welcome to Our Book Store !!!!!</h1>
+<h1>Our BookStore</h1>
+
+<h2>Welcome</h2>
+<form action="/books" method="GET">
+    <button>Check out our books</button>
+</form>
+<script >
+    const url = 'http://localhost:3000/books'
+    fetch(url).then(res => res.json()).then(books => console.log(books))
+</script>

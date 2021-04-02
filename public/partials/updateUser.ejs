@@ -2,10 +2,10 @@
     <h1>Update User</h1>
     <div class="row">
         <div class="col-md-6">
-            <form method="POST" action="/users/updateUser/<%= data._id%>" >
+            <form method="POST" action="/users/updateUser/<%= data._id%>" id="editForm">
                 <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">First Name</label>
-                    <input class="form-control" type="text" value="<%= data.fname%>" name="fName" placeholder="First Name" />
+                    <input class="form-control" type="text" value="<%= data.fName%>" name="fName" placeholder="First Name" />
                 </div>
                 <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Last Name</label>
@@ -20,7 +20,7 @@
                     <input class="form-control" type="text" value="<%= data.password%>" name="password" placeholder="Password" />
                 </div>
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
                 
             </form>
@@ -28,6 +28,59 @@
         </div>
     </div>
     <form action="/users" method="GET">
-        <button>Back to Users</button>
+        <button class="btn btn-warning">Back to Users</button>
     </form>
     
+    <div id="messageModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="modalHeader">
+                <h5 class="modal-title " id="modalTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        $('#editForm').on('submit', (e)=>{
+            e.preventDefault()
+            console.log(e.target)
+            $.ajax({
+                url: $(e.target).attr('action'),
+                method: $(e.target).attr('method'),
+                data: $(e.target).serialize(),
+                success: response=>{
+                    if(response.success){
+                        $("#modalHeader").addClass("bg-success").removeClass("bg-danger")
+                        $("#modalTitle").html("").html("Success")
+                        $("#modalBody").html("").html(`Update User "<%= data.fName%>" "<%= data.lName%>" Success.`)
+                        $("#messageModal").modal("show")
+                    }else{// we got replay from server but the process not don
+                        $("#modalHeader").removeClass("bg-success").addClass("bg-danger")
+                        $("#modalTitle").html("").html("Error").removeClass("bg-success").addClass("bg-danger")
+                        $("#modalBody").html("").html(`Update User "<%= data.fName%>" "<%= data.lName%>" Not Success.<br/> ${response.error}`)
+                        $("#messageModal").modal("show")
+                    }
+                    
+                },
+                error: error=>{
+                    $("#modalHeader").removeClass("bg-success").addClass("bg-danger")
+                        $("#modalTitle").html("").html("Error").removeClass("bg-success").addClass("bg-danger")
+                        $("#modalBody").html("").html(`internal server error`)
+                        $("#messageModal").modal("show")
+                    console.log(error)
+                    
+                }
+            })
+        })
+
+    </script>

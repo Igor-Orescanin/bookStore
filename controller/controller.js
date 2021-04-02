@@ -262,7 +262,7 @@ const deleteUser = (req, res) => {
     if (err) {
       res.json({ message: err.message });
     } else {
-      res.send({ status: 1 , message: 'You got deleteeeeed'});
+      res.send({ status: 1 , message: 'You got deleted'});
     }
   });
 };
@@ -272,7 +272,6 @@ const user = (req, res) => {
     if (err) {
       res.json({ message: err });
     } else {
-      res.render("user", { data: doc });
       res.render("mainTemplate", {
         title: `${doc.fName} ${doc.lName}`,
         render: "user",
@@ -288,29 +287,16 @@ const orders = (res) => {
   schema.OrderData.find()
     .lean()
     .then((docs) => { 
-      res.render("mainTemplate", {title: "Orders", render:"orders", data: docs });
+      res.render("mainTemplate", {
+        title: "Orders", 
+        render:"orders", 
+        data: docs 
+      });
     })
     .catch((error) => {
       res.json({ error: error });
     });
 };
-// const orders = (req, res) => {
-//     schema.OrderData.find({}, (err, docs) =>{
-//         if(err) {
-//             res.json({message: err})
-//         } else {
-//             schema.BookData.findById(docs.bookId, (err, book) =>{
-//                 if(err) {
-//                     res.json({message: err})
-//                 }
-
-//         res.render('orders', { data: docs , book :book})
-//         })
-
-//         }
-
-//     })
-// }
 
 const addOrder = (req, res) => {
   schema.BookData.findById(req.body.bookId, (err, doc) => {
@@ -345,7 +331,11 @@ const getUpdateOrder = async (req, res) => {
     if (err) {
       res.json({ message: err });
     } else {
-      res.render("updateOrder", { data: doc });
+      res.render("mainTemplate", {
+        title: "Update Order",
+        render: "updateOrder" ,
+        data: doc
+       });
     }
   });
 };
@@ -384,7 +374,12 @@ const checkOrder = async (req, res) => {
   await schema.OrderData.findOne({ _id: id })
     .populate("books")
     .then((book) => {
-      res.render("mainTemplate", {title: "Check Order", render: "checkOrder", data: book, orderId: id });
+      res.render("mainTemplate", {
+        title: "Check Order", 
+        render: "checkOrder", 
+        data: book, 
+        orderId: id 
+      });
     });
 };
 
