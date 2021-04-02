@@ -217,7 +217,11 @@ const getUpdateUser = async (req, res) => {
     if (err) {
       res.json({ message: err });
     } else {
-      res.render("updateUser", { data: doc });
+      res.render("mainTemplate", {
+        title: "Update User",
+        render: "updateUser",
+        data: doc
+       });
     }
   });
 };
