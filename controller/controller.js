@@ -354,7 +354,7 @@ const updateOrder = (req, res) => {
             bookId: req.body.bookId || doc.bookId,
             qty: req.body.qty || doc.qty,
             id: req.params.id,
-            books: [...doc.books, req.body.books] || doc.books,
+            books: [...doc.books, req.body.books],
           },
         },
         (err, doc) => {
