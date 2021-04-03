@@ -5,6 +5,7 @@
 
 
     <div class="row">
+        <p>Order Id: <%= data._id%></p>
         <div class="col-md-6">
             <form method="POST" action="/orders/updateOrder/<%= data._id%>" id="editForm">
                 <div class="form-group col-md-12">
@@ -15,7 +16,7 @@
                     <label for="exampleInputPassword1">Quantity</label>
                     <input class="form-control" type="text" value="<%= data.qty%>" name="qty" placeholder="Quantity" />
                 </div>
-                <h4>Books input is used for adding books id which will be referenced in database and populated on route "orders/check/:id"</h4>
+                <p>Books input is used for adding books id which will be referenced in database and populated on route "orders/check/:id"</p>
                 <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Books</label>
                     <input class="form-control" type="text"  name="books" placeholder="Books" />
@@ -26,17 +27,21 @@
                 
             </form>
             <form action="/orders" method="GET">
-                <button class="btn btn-warning">Back to Orders</button>
+                <button class="btn btn-warning mt-5">Back to Orders</button>
             </form>
-            <p>Order Id: <%= data._id%></p>
+            
         </div>
     </div>
+    <form action="/orders/check/<%= data._id%>" method="GET">
+        <button class="btn btn-warning m-5">Check referenced and populated</button>
+    </form>
     <% if (data.books) { %>
         <% data.books.forEach(function(book){ %>
             <p> BOOKS: <%= book %></p>
     
         <% }) %>
             <% } %>
+
     
     
 
