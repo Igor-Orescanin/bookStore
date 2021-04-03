@@ -63,6 +63,7 @@ usersRouter
     .post((req,res) => {
         controller.updateUser(req, res)
     })
+
 usersRouter
     .route('/:id')
     .get((req, res) => {

@@ -39,9 +39,6 @@ ordersRouter
         controller.updateOrder(req, res)
     })
 
-
-
-
 ordersRouter
     .route(`/:id`)
     .get((req, res) => {

@@ -35,7 +35,6 @@ booksRouter
         
     })
 
-
 booksRouter
     .route('/:id')
     .get((req, res) => {
@@ -50,8 +49,8 @@ booksRouter
         controller.deleteBook(req, res)
         
     })
-booksRouter.delete("/:id",(req,res)=>{
-        res.json({status: 1})
-    })
+// booksRouter.delete("/:id",(req,res)=>{
+//         res.json({status: 1})
+//     })
 
 module.exports = booksRouter
