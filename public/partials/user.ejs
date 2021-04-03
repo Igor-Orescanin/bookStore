@@ -34,9 +34,8 @@ function del(e){
     }).then(data => {
         data.json().then( m => {
             if(m.status){
-            res.json({
-                message: 'You got deleteeeeed'
-            })
+                console.log("success")
+                window.location.replace('/users/')
             }else{
                 console.log("Failed")
             }
