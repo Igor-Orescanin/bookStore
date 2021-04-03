@@ -231,7 +231,7 @@ const updateUser = (req, res) => {
   console.log(id);
   schema.UserData.findById(id, (err, doc) => {
     if (err) {
-      res.json({ message: err });
+      res.json({ success: false, error: err });
     } else {
       schema.UserData.updateOne(
         { _id: id },
