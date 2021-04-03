@@ -262,7 +262,7 @@ const deleteUser = (req, res) => {
     if (err) {
       res.json({ message: err.message });
     } else {
-      res.send({ status: 1 , message: 'You got deleted'});
+      res.send({ status: 1 });
     }
   });
 };
