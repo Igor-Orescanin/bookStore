@@ -4,43 +4,47 @@
 
 
 
-    <div class="row">
-        <p>Order Id: <%= data._id%></p>
-        <div class="col-md-6">
-            <form method="POST" action="/orders/updateOrder/<%= data._id%>" id="editForm">
-                <div class="form-group col-md-12">
-                    <label for="exampleInputPassword1">Book Id</label>
-                    <input class="form-control" type="text" value="<%= data.bookId%>" name="bookId" placeholder="Book Id" />
-                </div>
-                <div class="form-group col-md-12">
-                    <label for="exampleInputPassword1">Quantity</label>
-                    <input class="form-control" type="text" value="<%= data.qty%>" name="qty" placeholder="Quantity" />
-                </div>
-                <p>Books input is used for adding books id which will be referenced in database and populated on route "orders/check/:id"</p>
-                <div class="form-group col-md-12">
-                    <label for="exampleInputPassword1">Books</label>
-                    <input class="form-control" type="text"  name="books" placeholder="Books" />
-                </div>
-                <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </div>
-                
+    <div class="d-flex flex-column align-items-center">
+        <div class="row">
+            <p>Order Id: <%= data._id%></p>
+            <div class="col-md-6">
+                <form method="POST" action="/orders/updateOrder/<%= data._id%>" id="editForm">
+                    <div class="form-group col-md-12">
+                        <label for="exampleInputPassword1">Book Id</label>
+                        <input class="form-control" type="text" value="<%= data.bookId%>" name="bookId" placeholder="Book Id" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="exampleInputPassword1">Quantity</label>
+                        <input class="form-control" type="text" value="<%= data.qty%>" name="qty" placeholder="Quantity" />
+                    </div>
+                    <p>Books input is used for adding books id which will be referenced in database and populated on route "orders/check/:id"</p>
+                    <div class="form-group col-md-12">
+                        <label for="exampleInputPassword1">Books</label>
+                        <input class="form-control" type="text"  name="books" placeholder="Books" />
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary mt-5">Update</button>
+                    </div>
+        
+                </form>
+                <form action="/orders" method="GET">
+                    <button class="btn btn-warning mt-5">Back to Orders</button>
+                </form>
+        
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <form action="/orders/check/<%= data._id%>" method="GET">
+                <button class="btn btn-info mt-5">Check referenced and populated</button>
             </form>
-            <form action="/orders" method="GET">
-                <button class="btn btn-warning mt-5">Back to Orders</button>
-            </form>
+            <% if (data.books) { %>
+                <% data.books.forEach(function(book){ %>
+                    <p> BOOKS: <%= book %></p>
             
+                <% }) %>
+                    <% } %>
         </div>
     </div>
-    <form action="/orders/check/<%= data._id%>" method="GET">
-        <button class="btn btn-warning m-5">Check referenced and populated</button>
-    </form>
-    <% if (data.books) { %>
-        <% data.books.forEach(function(book){ %>
-            <p> BOOKS: <%= book %></p>
-    
-        <% }) %>
-            <% } %>
 
     
     
