@@ -42,7 +42,7 @@
 
     
     
-        <!-- <div id="messageModal" class="modal fade" tabindex="-1" role="dialog">
+        <div id="messageModal" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header" id="modalHeader">
@@ -69,7 +69,7 @@
                 $.ajax({
                     url: $(e.target).attr('action'),
                     method: $(e.target).attr('method'),
-                   
+                    data: $(e.target).serialize(),
                     success: response=>{
                         if(response.success){
                             $("#modalHeader").addClass("bg-success").removeClass("bg-danger")
@@ -96,6 +96,6 @@
                 })
             })
     
-        </script> -->
+        </script>
     
         
