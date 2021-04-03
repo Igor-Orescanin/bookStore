@@ -31,3 +31,75 @@
         <button class="btn btn-warning">Back to Users</button>
     </form>
 
+    <!-- <form class="center" method="POST" action="/users/updateUser/<%= data.id%>" >
+        <input type="text" name="fName" placeholder="First Name"><br>
+        <input type="text" name="lName" placeholder="Last Name"><br>
+        <input type="text" name="email" placeholder="Email"><br>
+        <input type="text" name="password" placeholder="Password"><br>
+        <input type="submit" value="Submit"><br>
+    </form>
+    <h2>User : <%= data.fName %> <%= data.lName %></h2>
+    <p>Email: <%= data.email %></p>
+    <p>Password: <%= data.password %></p>
+        
+        <p>Id: <%= data.id%></p>
+        <form action="/users" method="GET">
+            <button>Back to Users</button>
+        </form> -->
+
+        <div id="messageModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" id="modalHeader">
+                    <h5 class="modal-title " id="modalTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            
+        </div>
+    
+    
+        <script>
+            $('#editForm').on('submit', (e)=>{
+                e.preventDefault()
+                console.log(e.target)
+                $.ajax({
+                    url: $(e.target).attr('action'),
+                    method: $(e.target).attr('method'),
+                    data: $(e.target).serialize(),
+                    success: response=>{
+                        if(response.success){
+                            $("#modalHeader").addClass("bg-success").removeClass("bg-danger")
+                            $("#modalTitle").html("").html("Success")
+                            $("#modalBody").html("").html(`Update User "<%= data.fName%>" "<%= data.lName%>" Success.`)
+                            $("#messageModal").modal("show")
+                        }else{// we got replay from server but the process not don
+                            $("#modalHeader").removeClass("bg-success").addClass("bg-danger")
+                            $("#modalTitle").html("").html("Error").removeClass("bg-success").addClass("bg-danger")
+                            $("#modalBody").html("").html(`Update User "<%= data.fName%>" "<%= data.lName%>" Not Success.<br/> ${response.error}`)
+                            $("#messageModal").modal("show")
+                        }
+                        console.log(response)
+                        
+                    },
+                    error: error=>{
+                        $("#modalHeader").removeClass("bg-success").addClass("bg-danger")
+                            $("#modalTitle").html("").html("Error").removeClass("bg-success").addClass("bg-danger")
+                            $("#modalBody").html("").html(`internal server error`)
+                            $("#messageModal").modal("show")
+                        console.log(error)
+                        
+                    }
+                })
+            })
+    
+        </script>
+    
