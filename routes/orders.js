@@ -44,7 +44,7 @@ ordersRouter
     .get((req, res) => {
         controller.order(req, res)
     })
-    .put((req,res) => {
+    .post((req,res) => {
         controller.updateOrder(req, res)
     })
     .delete((req, res) => {

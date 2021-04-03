@@ -76,7 +76,6 @@ usersRouter
         controller.deleteUser(req, res)
     })
 
-   
 
 
 module.exports = usersRouter    
