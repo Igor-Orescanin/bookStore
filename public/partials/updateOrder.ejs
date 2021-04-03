@@ -9,11 +9,11 @@
             <form method="POST" action="/orders/updateOrder/<%= data._id%>" id="editForm">
                 <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Book Id</label>
-                    <input class="form-control" type="text" name="bookId" placeholder="Book Id" />
+                    <input class="form-control" type="text" value="<%= data.bookId%>" name="bookId" placeholder="Book Id" />
                 </div>
                 <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Quantity</label>
-                    <input class="form-control" type="text"  name="qty" placeholder="Quantity" />
+                    <input class="form-control" type="text" value="<%= data.qty%>" name="qty" placeholder="Quantity" />
                 </div>
                 <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Books</label>
@@ -38,8 +38,7 @@
             <% } %>
     
     
-    <hr>
-        <a href="/books" class="btn btn-sm btn-success">Back To Books</a>
+
     
     
         <div id="messageModal" class="modal fade" tabindex="-1" role="dialog">

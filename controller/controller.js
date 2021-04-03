@@ -345,7 +345,7 @@ const updateOrder = (req, res) => {
   console.log(id);
   schema.OrderData.findById(id, (err, doc) => {
     if (err) {
-      res.json({ message: err });
+      res.json({ success: false, error: err });
     } else {
       schema.OrderData.updateOne(
         { _id: id },
@@ -359,9 +359,9 @@ const updateOrder = (req, res) => {
         },
         (err, doc) => {
           if (err) {
-            res.json({ message: err.message });
+            res.json({ success: false, error: err.message });
           } else {
-            res.redirect("/orders");
+            res.json({ success: true, error: null });
           }
         }
       );
