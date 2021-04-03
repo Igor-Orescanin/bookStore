@@ -342,7 +342,7 @@ const getUpdateOrder = async (req, res) => {
 
 const updateOrder = (req, res) => {
   const id = req.params.id;
-  console.log(id);
+  console.log(req.body.books);
   schema.OrderData.findById(id, (err, doc) => {
     if (err) {
       res.json({ success: false, error: err });

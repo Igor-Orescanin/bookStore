@@ -15,6 +15,7 @@
                     <label for="exampleInputPassword1">Quantity</label>
                     <input class="form-control" type="text" value="<%= data.qty%>" name="qty" placeholder="Quantity" />
                 </div>
+                <h4>Books input is used for adding books id which will be referenced in database and populated on route "orders/check/:id"</h4>
                 <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Books</label>
                     <input class="form-control" type="text"  name="books" placeholder="Books" />
@@ -27,7 +28,7 @@
             <form action="/orders" method="GET">
                 <button class="btn btn-warning">Back to Orders</button>
             </form>
-            <p>Id: <%= data._id%></p>
+            <p>Order Id: <%= data._id%></p>
         </div>
     </div>
     <% if (data.books) { %>
@@ -73,7 +74,7 @@
                         if(response.success){
                             $("#modalHeader").addClass("bg-success").removeClass("bg-danger")
                             $("#modalTitle").html("").html("Success")
-                            $("#modalBody").html("").html(`Update Book Success.`)
+                            $("#modalBody").html("").html(`Update Order Success.`)
                             $("#messageModal").modal("show")
                         }else{// we got replay from server but the process not don
                             $("#modalHeader").removeClass("bg-success").addClass("bg-danger")
